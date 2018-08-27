@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="jumbotron text-center">
+                <h2 class="text-center">Eat-Da-Burger</h2>
+                <img src="/assets/img/burger.svg" class="" style="margin:auto; width:200px">
+                <!-- I don't get this relative path -->
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-4">
+
+<h2>Fresh Burgers</h2>
+            <!-- add NEW burgers to this list -->
+
+            {{#each burgers}} {{#unless devoured}}
+            <!-- <form action="api/burger/{{id}}" method="POST"> -->
+            <form action="burger/devour/{{id}}" method="POST">
+                <div class="input-group">
+                    <li class="form-control text-align-center">{{burger_name}}</li>
+                    <div class="input-group-append">
+                        <button class="btn btn-success devour-burger" data-burger-id={{devoured}} data-burger-name={{burger_name}} type="submit">Devour</button>
+                    </div>
+                </div>
+            </form>
+            {{/unless}} {{/each}}
+
+        </div>
+        <div class="col-xl-4 offset-xl-4">
+<h2>Devoured Burgers</h2>
+            <!-- add DEVOURED burgers to this list -->
+            {{#each burgers}} {{#if this.devoured}}
+            <div>
+                <li class="form-control text-align-center">{{this.burger_name}}</li>
+            </div>
+            {{/if}} {{/each}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-4 offset-xl-4 text-center">
+            <div class="card" style="margin-top:70px;">
+                <div class="card-body">
+                    <p>Enter a burger you want to eat.</p>
+                    <div class="form-group">
+                        <input class="form-control input-lg" rows="5" id="enter-burger">
+                    </div>
+                    <button class="btn btn-success btn-lg" role="button" type="submit" id="place-order">Place Order</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
